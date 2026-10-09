@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spreadsheets workshop: Britain's imports, 1856&ndash;1906 | HIST 243</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="course" href="../">HIST 243 Workshops</a>
+<span class="crumbs">Spreadsheets workshop</span>
+</div></header>
+<main class="wrap">
+<h1>Spreadsheets workshop: Britain's imports, 1856&ndash;1906</h1>
+<h2>What this workshop is for</h2>
+<p>Milestone 4 asks you to build a chart in spreadsheet software from data in your own sources and to submit the spreadsheet with it. This workshop is the practice run. You will work with a large, real historical dataset: every import into the United Kingdom recorded in the <em>Annual Statement of Trade</em>, every fifth year from 1856 to 1906. That is 38,590 rows, transcribed and error-checked from the House of Commons Parliamentary Papers by me and a team of students.</p>
+<p>Along the way you will learn to filter, sort, write a simple formula, and make a chart with proper labels. You will also run into the three problems that trip up almost everyone who charts historical statistics: <strong>totals counted twice</strong>, <strong>categories that change their names</strong>, and <strong>units that don't match</strong>. Learning to spot those is the real point.</p>
+
+<h3>How to use this page</h3>
+<ul>
+<li><strong>Try each task yourself first.</strong> Under each task are hints that open one at a time. Open only as many as you need.</li>
+<li><strong>The screenshots use a different example</strong> (tea, and the year 1876) so they show you <em>how</em> without giving away your answers.</li>
+<li><strong>Check your work</strong> before moving on. These boxes don't give the answers. They help you spot the most common mistakes and ask you to think about what you found. Later tasks build on earlier ones.</li>
+<li><strong>Still stuck?</strong> The walkthrough video shows the same steps in Excel: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce">Spreadsheet workshop walkthrough (Panopto, 27 minutes)</a>. Each task links to the point in the video where that step begins. The video is from an earlier year: the steps are the same, but the order and a few details differ.</li>
+<li>Allow about <strong>90 minutes</strong>.</li>
+</ul>
+
+<h3>Which software?</h3>
+<p>The screenshots show <strong>Excel</strong> for Windows (Microsoft 365). Mac Excel and Excel for the web look a little different but use the same menu names. On a Mac, read <kbd>Ctrl</kbd> as <kbd>Cmd</kbd>. Every step also has instructions for <strong>Google Sheets</strong> (free with any Google account), with a link to Google's own illustrated help. LibreOffice works too; its menus are close to Excel's.</p>
+
+<h2>Step 0. Get the data (5 minutes)</h2>
+<p>Download the spreadsheet from Zenodo: <a href="https://doi.org/10.5281/zenodo.3583723">London's Ghost Acres: British Imports 1856&ndash;1906 Database</a>. The file is <code>Londons-Ghost-Acres-British-Imports-1856-1906.xlsx</code> (3 MB).</p>
+<p><strong>Excel:</strong> open the file. Because it came from the internet, Excel opens it in <em>Protected View</em>: click <strong>Enable Editing</strong> in the yellow bar. Then use <strong>File &gt; Save As</strong> to save your own working copy.</p>
+<figure class="shot"><img src="images/e_protected_view.png" alt="Excel's yellow Protected View bar, with the Enable Editing button highlighted." width="1000" height="169" loading="lazy"></figure>
+<p><strong>Google Sheets:</strong> go to <a href="https://drive.google.com">drive.google.com</a>, click <strong>New &gt; File upload</strong>, and choose the file. When it appears in your Drive, double-click it, then choose <strong>Open with Google Sheets</strong>. The import can take a minute. Google's help: <a href="https://support.google.com/drive/answer/2424368">Upload files to Google Drive</a> and <a href="https://support.google.com/docs/answer/6055139">Work with Office files</a>.</p>
+
+<h2>Step 1. Meet the data (10 minutes)</h2>
+<p>Each row is one commodity, from one place, in one year. The columns you need:</p>
+<table>
+<tbody>
+<tr><td><strong>A</strong></td><td><code>YEAR</code></td><td>1856, 1861, 1866 &hellip; 1906 (every fifth year)</td></tr>
+<tr><td><strong>B</strong></td><td><code>COMMODITY_NAME</code></td><td>The category exactly as the source printed it</td></tr>
+<tr><td><strong>E</strong></td><td><code>FROM_LOCATION</code></td><td>Where the goods came from, as the source named it</td></tr>
+<tr><td><strong>G</strong></td><td><code>AMOUNT</code></td><td>The quantity&hellip;</td></tr>
+<tr><td><strong>H</strong></td><td><code>UNIT_NAME</code></td><td>&hellip;and its unit: tons, hundredweights, pounds, gallons, number of animals, and so on</td></tr>
+<tr><td><strong>I</strong></td><td><code>VALUE</code></td><td>Declared value in British pounds (&pound;) of that year, not adjusted for inflation</td></tr>
+<tr><td><strong>K</strong></td><td><code>NOTE</code></td><td>Comments from the people who transcribed the data. Read them when they appear.</td></tr>
+</tbody>
+</table>
+<p>You can ignore the other columns (location codes, map coordinates, the source series).</p>
+<p class="important"><strong>The most important thing on this page:</strong> for every commodity in every year, one row has <code>FROM_LOCATION</code> = <strong>World</strong>. That is the total printed in the source. The other rows are the individual suppliers that make up that total. If you add up every row, you count everything twice.</p>
+<p><strong>Tip:</strong> if a column is too narrow, Excel shows long numbers as <code>1.4E+08</code> or <code>#####</code>. Double-click the line between two column letters (for example, between G and H) to widen the column to fit.</p>
+
+<h3>Set up your sheet</h3>
+<p>Do these three things, in this order.</p>
+
+<h4>1. Freeze the header row</h4>
+<p>This keeps the column names visible as you scroll.</p>
+<p><strong>Excel:</strong> <strong>View &gt; Freeze Panes &gt; Freeze Top Row</strong>.</p>
+<figure class="shot"><img src="images/e_freeze_top_row.png" alt="Excel's View tab with the Freeze Panes menu open and Freeze Top Row highlighted." width="750" height="320" loading="lazy"></figure>
+<p><strong>Google Sheets:</strong> <strong>View &gt; Freeze &gt; 1 row</strong>. Google's help: <a href="https://support.google.com/docs/answer/9060449">Freeze rows &amp; columns</a>.</p>
+
+<h4>2. Add a price column</h4>
+<p>Click cell <strong>Q1</strong> and type <code>PRICE_PER_UNIT</code>. In <strong>Q2</strong>, type <code>=I2/G2</code> (value divided by amount) and press Enter. The formula is the same in both programs.</p>
+<figure class="shot"><img src="images/e_price_formula.png" alt="The formula =I2/G2 being typed into cell Q2 under the heading PRICE_PER_UNIT, also shown in the formula bar." width="510" height="128" loading="lazy"></figure>
+<p>Now copy the formula down all 38,590 rows. Click Q2 again. A small square appears at its bottom-right corner: this is the <em>fill handle</em>. Double-click it. This works in both Excel and Google Sheets.</p>
+<figure class="shot"><img src="images/e_fill_handle.gif" alt="Animation: an arrow points to the small square at the bottom-right corner of cell Q2; after a double-click, the formula fills down the whole column." width="510" height="185" loading="lazy"></figure>
+<p>The result is the price in pounds per unit: per ton for copper, per hundredweight for cotton. Rows showing <code>#DIV/0!</code> are goods the source recorded by value only, with no quantity. Ignore them.</p>
+
+<h4>3. Turn on filters</h4>
+<p>Click any cell in the data.</p>
+<p><strong>Excel:</strong> <strong>Data &gt; Filter</strong> (or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>).</p>
+<figure class="shot"><img src="images/e_filter_button.png" alt="Excel's Data tab with the Filter button highlighted." width="1000" height="135" loading="lazy"></figure>
+<p><strong>Google Sheets:</strong> <strong>Data &gt; Create a filter</strong>. Google's help: <a href="https://support.google.com/docs/answer/3540681">Sort &amp; filter your data</a>.</p>
+<p>A small arrow appears on every column heading. If the PRICE_PER_UNIT column has no arrow, turn the filter off and on again.</p>
+<figure class="shot"><img src="images/e_filter_arrows.png" alt="The header row with a filter arrow on each column heading; the arrows on YEAR, COMMODITY_NAME and AMOUNT are highlighted." width="850" height="85" loading="lazy"></figure>
+<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=30">0:30</a> (a tour of the data and filters)</p>
+
+<h2>Task 1. Who supplied Britain's copper? (10 minutes)</h2>
+<p class="task-q">Which country supplied the most &ldquo;Copper Unwrought&rdquo; to Britain in 1886? How many tons did it send, what were they worth, and what did a ton cost?</p>
+<p><em>Unwrought</em> copper had been smelted into bars or ingots but not yet worked into sheets, wire, or goods.</p>
+
+<details><summary>Hint 1: where to start</summary>
+<p>You need two filters at the same time: one on <code>COMMODITY_NAME</code> and one on <code>YEAR</code>. Then sort the remaining rows by <code>AMOUNT</code>.</p>
+</details>
+
+<details><summary>Hint 2: step by step</summary>
+<p><em>The screenshots filter for tea in 1876. Use copper and 1886 for your own answer.</em></p>
+<h4>Excel</h4>
+<ol>
+<li><p>Click the arrow on <code>COMMODITY_NAME</code> and type the commodity into the <em>Search</em> box. The search finds every name that <em>contains</em> those letters, so several names appear.</p>
+<figure class="shot"><img src="images/e_filter_search_1.png" alt="The COMMODITY_NAME filter menu with Tea typed in the Search box; the search results include unrelated names like Stearine." width="325" height="450" loading="lazy"></figure>
+<p>Untick <strong>(Select All Search Results)</strong>, tick only the name that matches exactly, and click <strong>OK</strong>.</p>
+<figure class="shot"><img src="images/e_filter_search_2.png" alt="In the filter list, only the exact name Tea is ticked, and the OK button is highlighted." width="325" height="450" loading="lazy"></figure></li>
+<li><p>Click the arrow on <code>YEAR</code>. Untick <strong>(Select All)</strong>, tick the year you want, and click <strong>OK</strong>.</p>
+<figure class="shot"><img src="images/e_filter_year.png" alt="The YEAR filter menu with Select All unticked and only 1876 ticked." width="350" height="450" loading="lazy"></figure></li>
+<li><p>Click the arrow on <code>AMOUNT</code> and choose <strong>Sort Largest to Smallest</strong>.</p>
+<figure class="shot"><img src="images/e_sort_largest.png" alt="The AMOUNT filter menu with Sort Largest to Smallest highlighted." width="425" height="155" loading="lazy"></figure></li>
+</ol>
+<p>The rows are now in order. The top row is <strong>World</strong>. Remember what that means.</p>
+<figure class="shot"><img src="images/e_sorted_world_row.png" alt="Filtered and sorted rows for tea in 1876, with the World row highlighted at the top." width="950" height="185" loading="lazy"></figure>
+<h4>Google Sheets</h4>
+<ol>
+<li>Click the filter icon on <code>COMMODITY_NAME</code> and open <strong>Filter by values</strong>. Click <strong>Clear</strong>, search for the commodity, tick only the exact name, and click <strong>OK</strong>.</li>
+<li>Filter icon on <code>YEAR</code> &gt; <strong>Filter by values</strong> &gt; <strong>Clear</strong> &gt; tick the year &gt; <strong>OK</strong>.</li>
+<li>Filter icon on <code>AMOUNT</code> &gt; <strong>Sort Z &rarr; A</strong>.</li>
+</ol>
+<p>Google's help: <a href="https://support.google.com/docs/answer/3540681">Sort &amp; filter your data</a>.</p>
+</details>
+
+<details class="check"><summary>Check your work</summary>
+<ul>
+<li>Did you skip the <strong>World</strong> row? It is the total, not a country.</li>
+<li>Select the <code>AMOUNT</code> cells for all the country rows (click the first, <kbd>Shift</kbd>+click the last) and look at the <em>Sum</em> at the bottom right of the window. Both programs show it. It should match the World row exactly. That is how this database was error-checked.</li>
+</ul>
+<figure class="shot"><img src="images/e_status_sum.png" alt="The country rows' AMOUNT cells are selected, and the Sum in Excel's status bar matches the World row above them." width="375" height="217" loading="lazy"></figure>
+<ul>
+<li>Your price should be in pounds per ton. If it is a tiny fraction, the division is upside down.</li>
+</ul>
+<p><strong>Think about it:</strong> how much of the total came from a single country? What would Britain have needed this much copper for in the 1880s?</p>
+</details>
+
+<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=200">3:20</a></p>
+
+<h2>Task 2. Copper over fifty years, and your first chart (20 minutes)</h2>
+<p class="task-q">How much did Britain's imports of unwrought copper grow between 1856 and 1906? Make a column chart of the trend, with the years along the bottom (x) axis.</p>
+
+<details><summary>Hint 1: which rows?</summary>
+<p>You want one number per year: the total. Keep your <code>COMMODITY_NAME</code> filter, clear the <code>YEAR</code> filter (tick Select All again), and filter <code>FROM_LOCATION</code> to <strong>World</strong> only.</p>
+<figure class="shot"><img src="images/e_filter_world.png" alt="The FROM_LOCATION filter menu with World typed in the search box and only World ticked." width="425" height="450" loading="lazy"></figure>
+</details>
+
+<details><summary>Hint 2: make a small, clean table to chart from</summary>
+<p>Charts are easiest from a small table of exactly the numbers you want.</p>
+<ol>
+<li><p>Select columns A to Q: click the column letter <strong>A</strong>, then hold <kbd>Shift</kbd> and click <strong>Q</strong>. Copy (<kbd>Ctrl</kbd>+<kbd>C</kbd>). Only the visible (filtered) rows will be copied.</p>
+<figure class="shot"><img src="images/e_select_columns.png" alt="Columns A to Q selected by clicking column letter A and Shift-clicking column letter Q; the filtered World rows for tea are highlighted." width="895" height="210" loading="lazy"></figure></li>
+<li><p>Add a new sheet with the <strong>+</strong> next to the sheet tabs at the bottom of the window. Click cell A1 and paste (<kbd>Ctrl</kbd>+<kbd>V</kbd>).</p>
+<figure class="shot"><img src="images/e_new_sheet.png" alt="The plus button next to the Sheet1 tab, highlighted." width="350" height="55" loading="lazy"></figure>
+<figure class="shot"><img src="images/e_pasted_sheet.png" alt="The pasted rows in the new sheet; the AMOUNT column is too narrow, so some numbers show as 1.4E+08." width="950" height="210" loading="lazy"></figure></li>
+<li><p>Delete every column except <code>YEAR</code> and <code>AMOUNT</code>. Select the columns you don't need (click a column letter, <kbd>Shift</kbd>+click another), right-click a selected column letter, and choose <strong>Delete</strong>. Do this once for the columns between YEAR and AMOUNT and once for those after AMOUNT.</p>
+<figure class="shot"><img src="images/e_delete_columns.png" alt="Columns B to F selected, with the right-click menu open and Delete highlighted." width="550" height="350" loading="lazy"></figure></li>
+<li><p>Rename the <code>AMOUNT</code> heading to say what and which unit (for copper, <code>Tons</code>). You now have years in column A and amounts in column B.</p></li>
+</ol>
+<p>The same steps work in Google Sheets: the <strong>+</strong> is at the bottom left, and right-clicking a column letter gives <strong>Delete columns</strong>.</p>
+</details>
+
+<details><summary>Hint 3: making the chart</summary>
+<h4>Excel</h4>
+<ol>
+<li><p>Select <strong>only the numbers</strong> in column B, not the years and not the heading.</p>
+<figure class="shot"><img src="images/e_select_numbers.png" alt="A two-column table of years and pounds of tea, with only the numbers in column B selected." width="350" height="210" loading="lazy"></figure></li>
+<li><p><strong>Insert &gt; Insert Column or Bar Chart &gt; Clustered Column</strong> (the first 2-D Column option). In Excel, <em>bar</em> charts run sideways and <em>column</em> charts stand upright. Use column for change over time.</p>
+<figure class="shot"><img src="images/e_insert_column_chart.png" alt="The Insert tab with the column chart menu open and the 2-D Clustered Column option highlighted." width="625" height="325" loading="lazy"></figure></li>
+<li><p>The x-axis reads 1, 2, 3&hellip; instead of years. Excel doesn't know where the years are yet.</p>
+<figure class="shot"><img src="images/e_chart_wrong_axis.png" alt="A new column chart whose x-axis is labelled 1 to 10 instead of years." width="700" height="265" loading="lazy"></figure></li>
+<li><p>Right-click the chart and choose <strong>Select Data</strong>.</p>
+<figure class="shot"><img src="images/e_select_data_menu.png" alt="The chart's right-click menu with Select Data highlighted." width="500" height="520" loading="lazy"></figure></li>
+<li><p>Under <em>Horizontal (Category) Axis Labels</em>, click <strong>Edit</strong>.</p>
+<figure class="shot"><img src="images/e_select_data_dialog.png" alt="The Select Data Source dialog; the Edit button under Horizontal (Category) Axis Labels is highlighted, and the labels currently read 1, 2, 3." width="878" height="475" loading="lazy"></figure></li>
+<li><p>With the small <em>Axis Labels</em> box open, drag across the years in column A, then click <strong>OK</strong>, and <strong>OK</strong> again.</p>
+<figure class="shot"><img src="images/e_axis_labels_dialog.png" alt="The Axis Labels box after dragging across the years in column A; the range now reads =Sheet2!$A$2:$A$11." width="550" height="265" loading="lazy"></figure></li>
+<li><p>The years are now on the x-axis.</p>
+<figure class="shot"><img src="images/e_chart_years.png" alt="The column chart with the years 1856 to 1906 along the x-axis." width="575" height="265" loading="lazy"></figure></li>
+<li><p>Add axis titles: click the chart, then <strong>Chart Design &gt; Add Chart Element &gt; Axis Titles</strong>, and choose Primary Horizontal and then Primary Vertical. Click any title to type your own words, including the chart title.</p>
+<figure class="shot"><img src="images/e_axis_titles_menu.png" alt="The Chart Design tab, with Add Chart Element, Axis Titles, and the Primary Horizontal and Primary Vertical options highlighted." width="750" height="370" loading="lazy"></figure></li>
+</ol>
+<p>A finished chart has a title that says what, where, and when, and axis titles that give the unit:</p>
+<figure class="shot"><img src="images/e_chart_final.png" alt="A finished column chart titled British tea imports, 1856-1906, with axis titles Year and Pounds (lbs) of tea." width="380" height="230" loading="lazy"></figure>
+<p><em>Why not select the years too?</em> Excel sees numbers in both columns, assumes both are data, and draws a second set of bars for the years.</p>
+<h4>Google Sheets</h4>
+<ol>
+<li>Select both columns, including the headings.</li>
+<li><strong>Insert &gt; Chart</strong>. In the Chart editor, <em>Setup</em> tab, choose <strong>Column chart</strong>.</li>
+<li>Check that <em>X-axis</em> shows the year column. If the years appear under <em>Series</em> instead, remove them there (three dots &gt; Remove) and add them as the X-axis.</li>
+<li>To label every year, go to <em>Customise &gt; Horizontal axis</em> and tick <strong>Treat labels as text</strong>.</li>
+<li>Edit the titles under <em>Customise &gt; Chart &amp; axis titles</em>.</li>
+</ol>
+<p>Google's help: <a href="https://support.google.com/docs/answer/63824">Add &amp; edit a chart or graph</a> and <a href="https://support.google.com/docs/answer/190718">Types of charts &amp; graphs</a>.</p>
+</details>
+
+<p><strong>Now look hard at your chart.</strong> Some years are missing. Which ones, and why? The data entry wasn't careless, and the answer is in the spreadsheet.</p>
+
+<details><summary>Hint 4: the missing years</summary>
+<p>Go back to the main sheet. Open the <code>COMMODITY_NAME</code> filter and search <code>Copper</code>. Read every name on the list and note which years each one covers.</p>
+</details>
+
+<details class="check"><summary>Check your work</summary>
+<ul>
+<li>The x-axis should show <strong>years</strong>, not 1, 2, 3&hellip;, and there should be only one set of bars.</li>
+<li>The chart needs a title and axis titles, and the y-axis title should give the unit (tons).</li>
+<li>Can you explain in one sentence why some years have no bar?</li>
+</ul>
+<p><strong>Your decision as a historian:</strong> once you know why years are missing, decide what goes on the chart. You can keep only the years that match exactly, or you can add related figures by hand and explain how they differ. Either is defensible <strong>if you say what you did</strong>, in a note under the chart or in your methodology appendix. That habit matters more than anything else for Milestone 4.</p>
+<p><strong>Going further:</strong> use your price column. What happened to the price of a ton of copper between 1856, 1886, and 1906?</p>
+</details>
+
+<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=320">5:20</a></p>
+
+<h2>Task 3. Raw cotton (20 minutes)</h2>
+<p class="task-q">(a) How did Britain's raw cotton imports change between 1856 and 1906? In which year was raw cotton most expensive, and why?</p>
+<p>Cotton is measured in hundredweights (cwt). One hundredweight is 112 pounds, or one-twentieth of a ton.</p>
+
+<details><summary>Hint 1</summary>
+<p>These are the same moves as Task 2. Filter <code>COMMODITY_NAME</code> to raw cotton and <code>FROM_LOCATION</code> to World. Your PRICE_PER_UNIT column already holds the price per hundredweight. Watch for one year where the category has a slightly different name. To see more than one name, tick each one in the filter list.</p>
+</details>
+
+<details class="check"><summary>Check your work</summary>
+<ul>
+<li>You should have a World total for all eleven years. If one is missing, look for a slightly different commodity name.</li>
+<li>Your price column should be in pounds per hundredweight. If the numbers are in the thousands or are tiny fractions, check your formula.</li>
+</ul>
+<p><strong>Think about it:</strong> what was happening in the United States in the early 1860s? Compare the suppliers in 1856 with the suppliers in your most expensive year. Who filled the gap? The Week 3 and Week 5 lectures will help.</p>
+</details>
+
+<p class="task-q">(b) How much cotton did the &ldquo;West Coast of Africa&rdquo; send to the UK in 1866? What is the last year that name appears as a cotton supplier? Why does it disappear? (The answer is in the spreadsheet.)</p>
+
+<details><summary>Hint 2</summary>
+<p>Clear the World filter. On <code>FROM_LOCATION</code>, search <code>Africa</code>, then try <code>Coast</code>. Sort by <code>YEAR</code> and read the place names in order.</p>
+</details>
+
+<details class="check"><summary>Check your work</summary>
+<ul>
+<li>Did you remove the World filter? Otherwise you will see no individual places at all.</li>
+<li>Read the <code>FROM_LOCATION</code> names in year order, from 1856 to 1906. Which names appear only once? Which new names appear later, and what do they have in common?</li>
+<li>Did West African cotton really stop, or did something else change?</li>
+</ul>
+<p><strong>Think about it:</strong> a column of place names is also a record of who controlled those places.</p>
+</details>
+
+<p class="video">Video: (a) <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=530">8:50</a>, (b) <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=660">11:00</a></p>
+
+<h2>Task 4. Britain's top ten imports by value, 1901 (10 minutes)</h2>
+<p class="task-q">What were the ten most valuable imports in 1901? How many of them are food?</p>
+
+<details><summary>Hint 1</summary>
+<p>Clear all your filters.</p>
+<p><strong>Excel:</strong> <strong>Data &gt; Clear</strong>.</p>
+<figure class="shot"><img src="images/e_data_clear.png" alt="Excel's Data tab with the Clear button, next to Filter, highlighted." width="1050" height="120" loading="lazy"></figure>
+<p><strong>Google Sheets:</strong> set each filter back to <em>Select all</em>, or use <strong>Data &gt; Remove filter</strong> and then <strong>Data &gt; Create a filter</strong> again.</p>
+<p>Then filter <code>YEAR</code> to 1901 and <code>FROM_LOCATION</code> to World, and sort <code>VALUE</code> from largest to smallest, just as you did in Task 1.</p>
+</details>
+
+<details><summary>Hint 2: look closely</summary>
+<p>Look for a commodity with <strong>Total</strong> in its name. Find the rows it adds up. You should count that thing once, not twice.</p>
+</details>
+
+<p><strong>Before you move on:</strong> copy these 1901 World rows (columns A to Q, as in Task 2) into a new sheet, pasting at A1 so the column letters stay the same. Name the sheet <code>1901</code>: double-click its tab, type the name, and press Enter (both programs). You need it for Task 5.</p>
+<figure class="shot"><img src="images/e_rename_tab.png" alt="A sheet tab renamed by double-clicking it and typing a new name." width="350" height="58" loading="lazy"></figure>
+
+<details class="check"><summary>Check your work</summary>
+<ul>
+<li>If you added anything up (with SUM or a pivot table), did you leave out the World rows? Including them doubles every number.</li>
+<li>Each import should appear in your top ten only once. Did you check the rows with <strong>Total</strong> in their names?</li>
+<li>Your largest import should be worth tens of millions of pounds.</li>
+</ul>
+<p><strong>Think about it:</strong> how many of your ten are food? This dataset is called <em>London's Ghost Acres</em>. Think back to Pomeranz's &ldquo;ghost acres&rdquo; in Week 5: what does your list suggest about where Britain's food came from by 1901?</p>
+</details>
+
+<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=1010">16:50</a></p>
+
+<h2>Task 5. Top ten by quantity, 1901 (20 minutes)</h2>
+<p class="task-q">Now rank the 1901 imports by weight. What are the top ten?</p>
+<p>The problem: the units don't match. You can't compare <em>loads</em> of timber with <em>hundredweights</em> of wheat and <em>pounds</em> of tea until everything is in the same unit. Convert to imperial tons:</p>
+<table>
+<thead><tr><th>Unit in the data</th><th>To get tons</th></tr></thead>
+<tbody>
+<tr><td>Tons</td><td>already tons</td></tr>
+<tr><td>Loads (timber)</td><td>a load is about one ton of timber: keep as is</td></tr>
+<tr><td>Tuns (whale oil)</td><td>a tun is about one ton of train (whale) oil: keep as is</td></tr>
+<tr><td>CWTS (Hundredweights)</td><td>divide by 20</td></tr>
+<tr><td>Lbs. (Pounds)</td><td>divide by 2,240</td></tr>
+<tr><td>Gallons (petroleum only)</td><td>a gallon of petroleum weighs about 6.1 lbs: multiply by 6.1, then divide by 2,240</td></tr>
+</tbody>
+</table>
+<p>Leave out everything else: goods counted by number (cattle, watches), by yards of cloth, in &ldquo;great hundreds&rdquo; (eggs), or recorded by value only.</p>
+
+<details><summary>Hint 1: the straightforward way</summary>
+<ol>
+<li>Work in your <code>1901</code> sheet. Sort it by <code>UNIT_NAME</code> (its filter arrow &gt; <strong>Sort A to Z</strong>) so each unit sits together in one block.</li>
+<li>In <strong>R1</strong> type <code>TONS</code>.</li>
+<li>In the first row of a block, type the right formula. For example, if the hundredweights start in row 11, type <code>=G11/20</code> in R11. For tons, the formula is just <code>=G11</code>.</li>
+<li>Click that cell, then <kbd>Shift</kbd>+click the cell in column R on the block's <em>last</em> row, and press <kbd>Ctrl</kbd>+<kbd>D</kbd> (<em>fill down</em>, in both programs). Don't double-click the fill handle here: it would run past the end of the block.</li>
+</ol>
+<figure class="shot"><img src="images/e_fill_block.gif" alt="Animation: the formula =G11/20 sits in R11 with the rest of the hundredweight block selected; after Ctrl+D, every row in the block shows its weight in tons." width="695" height="317" loading="lazy"></figure>
+<p>Repeat for each unit you can convert. Finally, sort the whole sheet by <code>TONS</code>, largest to smallest. Empty cells sort to the bottom.</p>
+</details>
+
+<details><summary>Hint 2: one formula for everything (optional)</summary>
+<p>If you're comfortable with formulas, paste this into R2 and fill it down with the fill handle. It works in both Excel and Sheets:</p>
+<p><code>=IFS(H2="Tons",G2, H2="Loads",G2, H2="Tuns (whale oil)",G2, H2="CWTS (Hundredweights)",G2/20, H2="Lbs. (Pounds)",G2/2240, AND(H2="Gallons",ISNUMBER(SEARCH("Petroleum",B2))),G2*6.1/2240, TRUE,"")</code></p>
+<figure class="shot"><img src="images/e_ifs_formula.png" alt="The IFS formula in the formula bar, with its result in cell R2 under the heading TONS." width="750" height="79" loading="lazy"></figure>
+<p>Read it left to right: <em>if the unit is Tons, use the amount; if it is hundredweights, divide by 20&hellip;; otherwise leave the cell blank.</em></p>
+</details>
+
+<details class="check"><summary>Check your work</summary>
+<ul>
+<li>Test a row by hand. Pick a hundredweight row, divide its <code>AMOUNT</code> by 20 on a calculator, and compare the result with your TONS column. Do the same for a pounds row (divide by 2,240).</li>
+<li>Rows in units you can't convert should be blank, not zero.</li>
+<li>As in Task 4, count any &ldquo;Total&rdquo; only once.</li>
+</ul>
+<p><strong>Think about it:</strong> compare this list with your Task 4 list. What ranks high by value but low by weight, and the reverse? What disappears from a ranking by weight altogether? If an item on your list puzzles you, look up what it was used for: it may tell you something about British industry.</p>
+</details>
+
+<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=1190">19:50</a></p>
+
+<h2>From workshop to Milestone 4</h2>
+<p>Your Milestone 4 chart will probably use a much smaller dataset you have typed in yourself from your sources. The same habits apply:</p>
+<ul>
+<li><strong>Make a small, clean table</strong>: one row per year (or place), one column per measure, with the unit in the column heading.</li>
+<li><strong>Don't count totals twice.</strong> Know which rows are totals and which are parts.</li>
+<li><strong>Keep categories and units consistent</strong>, or say clearly where they change.</li>
+<li><strong>Label everything</strong>: a title that says what, where, and when, and axis titles that include units (tons, &pound;, cwt).</li>
+<li><strong>Credit the source under the chart.</strong> For this dataset: Jim Clifford, <em>London's Ghost Acres: British Imports 1856&ndash;1906 Database</em> (Zenodo, 2019), from the <em>Annual Statement of Trade of the United Kingdom</em>, House of Commons Parliamentary Papers.</li>
+<li><strong>Make it accessible</strong>: write alt text, and use labels that don't rely on colour alone.</li>
+<li><strong>Submit the spreadsheet</strong> with the chart.</li>
+</ul>
+<p><strong>Save the chart as an image</strong> for your StoryMap. <strong>Excel:</strong> right-click the chart and choose <strong>Save as Picture</strong>. The same menu has <strong>View Alt Text</strong>, where you can write the chart's alt text.</p>
+<figure class="shot"><img src="images/e_save_as_picture.png" alt="The chart's right-click menu with Save as Picture and View Alt Text highlighted." width="500" height="690" loading="lazy"></figure>
+<p><strong>Google Sheets:</strong> click the chart, open its three-dot menu, and choose <strong>Download &gt; PNG image</strong>.</p>
+
+</main>
+<footer class="site"><div class="wrap">HIST 243, University of Saskatchewan. Data: Jim Clifford, <a href="https://doi.org/10.5281/zenodo.3583723">London's Ghost Acres: British Imports 1856&ndash;1906 Database</a> (Zenodo, 2019), ODC-BY.</div></footer>
+</body>
+</html>
