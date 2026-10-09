@@ -87,3 +87,5 @@ table.kit { width: 100%; font-size: .95rem; }
 figure.shot.narrow { max-width: 380px; }
 .kitgrid.two { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 figure.kit img[src^="ui/"] { height: auto; object-fit: contain; }
+.callout { border: 2px solid var(--green); background: #eef6f0; border-radius: 10px; padding: .4rem 1.2rem; margin: 0 0 1.5rem; }
+.callout ul { margin: .2rem 0; }
