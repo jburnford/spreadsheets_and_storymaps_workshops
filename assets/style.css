@@ -84,3 +84,6 @@ figure.kit.media { max-width: 520px; }
 figure.kit figcaption { font-size: .88rem; line-height: 1.4; margin-top: .4rem; }
 .credit { color: var(--muted); }
 table.kit { width: 100%; font-size: .95rem; }
+figure.shot.narrow { max-width: 380px; }
+.kitgrid.two { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+figure.kit img[src^="ui/"] { height: auto; object-fit: contain; }
