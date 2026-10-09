@@ -73,3 +73,14 @@ p.video { color: var(--muted); }
 .card h2 { border: 0; margin: 0 0 .4rem; padding: 0; font-size: 1.25rem; }
 .card .soon { color: var(--muted); font-style: italic; }
 footer.site { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--border); padding: 1rem 0 2rem; }
+
+/* practice kit */
+.kitgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin: .8rem 0 1.2rem; }
+figure.kit { margin: 0; border: 1px solid var(--border); border-radius: 8px; padding: .5rem; background: #fff; }
+figure.kit img { display: block; width: 100%; height: 170px; object-fit: cover; border-radius: 4px; }
+figure.kit video { width: 100%; border-radius: 4px; }
+figure.kit audio { width: 100%; }
+figure.kit.media { max-width: 520px; }
+figure.kit figcaption { font-size: .88rem; line-height: 1.4; margin-top: .4rem; }
+.credit { color: var(--muted); }
+table.kit { width: 100%; font-size: .95rem; }
