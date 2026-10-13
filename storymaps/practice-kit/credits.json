@@ -88,34 +88,12 @@
   "date": "1801date QS:P571,+1801-00-00T00:00:00Z/9"
  },
  {
-  "file": "history_powerloom_weaving_1835.jpg",
-  "group": "history",
-  "caption": "Power-loom weaving, engraving after T. Allom (1835)",
-  "title": "Powerloom weaving in 1835.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Powerloom_weaving_in_1835.jpg",
-  "artist": "Illustrator T. Allom, Engraver J. Tingle",
-  "license": "Public domain",
-  "license_url": "",
-  "date": "1835"
- },
- {
-  "file": "history_picking_cotton_1890.jpg",
-  "group": "history",
-  "caption": "Picking cotton, hand-coloured photograph (c. 1890)",
-  "title": "Picking cotton LCCN2009633095 (cropped).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Picking_cotton_LCCN2009633095_(cropped).jpg",
-  "artist": "Batchelder, John Davis, 1872-1958, collector",
-  "license": "Public domain",
-  "license_url": "",
-  "date": "1890"
- },
- {
   "file": "history_cotton_famine_manchester_1862.jpg",
   "group": "history",
   "caption": "Queue for relief tickets in Manchester during the cotton famine (1862)",
   "title": "Cotton famine life magazine manchester.jpeg",
   "page": "https://commons.wikimedia.org/wiki/File:Cotton_famine_life_magazine_manchester.jpeg",
-  "artist": "Unknown authorUnknown author",
+  "artist": "Unknown artist",
   "license": "Public domain",
   "license_url": "",
   "date": "1862"
@@ -178,7 +156,7 @@
  {
   "file": "gallery_6_murrays_mills_manchester.png",
   "group": "gallery",
-  "caption": "A. & G. Murray's mills, Ancoats, Manchester",
+  "caption": "Cotton factories, Union Street, Manchester (A. & G. Murray's mills)",
   "title": "Baines 1835-A&G Murray.png",
   "page": "https://commons.wikimedia.org/wiki/File:Baines_1835-A%26G_Murray.png",
   "artist": "Baines",
@@ -195,7 +173,8 @@
   "artist": "Espt123",
   "license": "CC BY-SA 3.0",
   "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-  "date": "2010-02-15"
+  "date": "2010-02-15",
+  "modified": "converted to MP4"
  },
  {
   "file": "video_queen_street_mill_looms.mp4",
@@ -206,6 +185,18 @@
   "artist": "Victuallers",
   "license": "CC BY-SA 3.0",
   "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-  "date": "2013-05-07 14:40:59"
+  "date": "2013-05-07 14:40:59",
+  "modified": "converted to MP4"
+ },
+ {
+  "file": "history_cotton_picking_georgia_1907.jpg",
+  "group": "history",
+  "caption": "Cotton picking in Georgia, United States (photograph, 1907)",
+  "title": "Cotton picking in Georgia LCCN2006690190.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cotton_picking_in_Georgia_LCCN2006690190.jpg",
+  "artist": "Marcus L. Brown, Decatur, Georgia; Library of Congress",
+  "license": "Public domain",
+  "license_url": "",
+  "date": "1907"
  }
 ]

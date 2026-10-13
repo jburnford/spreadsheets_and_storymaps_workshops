@@ -50,6 +50,7 @@
 <h2>Step 1. Meet the data (10 minutes)</h2>
 <p>Each row is one commodity, from one place, in one year. The columns you need:</p>
 <table>
+<thead><tr><th>Column</th><th>Heading</th><th>What it holds</th></tr></thead>
 <tbody>
 <tr><td><strong>A</strong></td><td><code>YEAR</code></td><td>1856, 1861, 1866 &hellip; 1906 (every fifth year)</td></tr>
 <tr><td><strong>B</strong></td><td><code>COMMODITY_NAME</code></td><td>The category exactly as the source printed it</td></tr>
@@ -87,7 +88,7 @@
 <p><strong>Google Sheets:</strong> <strong>Data &gt; Create a filter</strong>. Google's help: <a href="https://support.google.com/docs/answer/3540681">Sort &amp; filter your data</a>.</p>
 <p>A small arrow appears on every column heading. If the PRICE_PER_UNIT column has no arrow, turn the filter off and on again.</p>
 <figure class="shot"><img src="images/e_filter_arrows.png" alt="The header row with a filter arrow on each column heading; the arrows on YEAR, COMMODITY_NAME and AMOUNT are highlighted." width="850" height="85" loading="lazy"></figure>
-<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=30">0:30</a> (a tour of the data and filters)</p>
+<p><a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=30">Walkthrough video: data tour and filters, from 0:30</a></p>
 
 <h2>Task 1. Who supplied Britain's copper? (10 minutes)</h2>
 <p class="task-q">Which country supplied the most &ldquo;Copper Unwrought&rdquo; to Britain in 1886? How many tons did it send, what were they worth, and what did a ton cost?</p>
@@ -99,7 +100,7 @@
 
 <details><summary>Hint 2: step by step</summary>
 <p><em>The screenshots filter for tea in 1876. Use copper and 1886 for your own answer.</em></p>
-<h4>Excel</h4>
+<h3>Excel</h3>
 <ol>
 <li><p>Click the arrow on <code>COMMODITY_NAME</code> and type the commodity into the <em>Search</em> box. The search finds every name that <em>contains</em> those letters, so several names appear.</p>
 <figure class="shot"><img src="images/e_filter_search_1.png" alt="The COMMODITY_NAME filter menu with Tea typed in the Search box; the search results include unrelated names like Stearine." width="325" height="450" loading="lazy"></figure>
@@ -112,7 +113,7 @@
 </ol>
 <p>The rows are now in order. The top row is <strong>World</strong>. Remember what that means.</p>
 <figure class="shot"><img src="images/e_sorted_world_row.png" alt="Filtered and sorted rows for tea in 1876, with the World row highlighted at the top." width="950" height="185" loading="lazy"></figure>
-<h4>Google Sheets</h4>
+<h3>Google Sheets</h3>
 <ol>
 <li>Click the filter icon on <code>COMMODITY_NAME</code> and open <strong>Filter by values</strong>. Click <strong>Clear</strong>, search for the commodity, tick only the exact name, and click <strong>OK</strong>.</li>
 <li>Filter icon on <code>YEAR</code> &gt; <strong>Filter by values</strong> &gt; <strong>Clear</strong> &gt; tick the year &gt; <strong>OK</strong>.</li>
@@ -133,7 +134,7 @@
 <p><strong>Think about it:</strong> how much of the total came from a single country? What would Britain have needed this much copper for in the 1880s?</p>
 </details>
 
-<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=200">3:20</a></p>
+<p><a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=200">Walkthrough video for Task 1, from 3:20</a></p>
 
 <h2>Task 2. Copper over fifty years, and your first chart (20 minutes)</h2>
 <p class="task-q">How much did Britain's imports of unwrought copper grow between 1856 and 1906? Make a column chart of the trend, with the years along the bottom (x) axis.</p>
@@ -159,7 +160,7 @@
 </details>
 
 <details><summary>Hint 3: making the chart</summary>
-<h4>Excel</h4>
+<h3>Excel</h3>
 <ol>
 <li><p>Select <strong>only the numbers</strong> in column B, not the years and not the heading.</p>
 <figure class="shot"><img src="images/e_select_numbers.png" alt="A two-column table of years and pounds of tea, with only the numbers in column B selected." width="350" height="210" loading="lazy"></figure></li>
@@ -180,8 +181,9 @@
 </ol>
 <p>A finished chart has a title that says what, where, and when, and axis titles that give the unit:</p>
 <figure class="shot"><img src="images/e_chart_final.png" alt="A finished column chart titled British tea imports, 1856-1906, with axis titles Year and Pounds (lbs) of tea." width="380" height="230" loading="lazy"></figure>
+<p>Notice what the chart doesn't show: the source has no tea figure for 1871, so the bars jump from 1866 to 1876 with no gap. A finished chart says so in a note underneath, along with its source, for example: <em>No figure for 1871: tea does not appear in the source that year. Source: Jim Clifford, London's Ghost Acres: British Imports 1856&ndash;1906 Database (Zenodo, 2019).</em></p>
 <p><em>Why not select the years too?</em> Excel sees numbers in both columns, assumes both are data, and draws a second set of bars for the years.</p>
-<h4>Google Sheets</h4>
+<h3>Google Sheets</h3>
 <ol>
 <li>Select both columns, including the headings.</li>
 <li><strong>Insert &gt; Chart</strong>. In the Chart editor, <em>Setup</em> tab, choose <strong>Column chart</strong>.</li>
@@ -195,7 +197,7 @@
 <p><strong>Now look hard at your chart.</strong> Some years are missing. Which ones, and why? The data entry wasn't careless, and the answer is in the spreadsheet.</p>
 
 <details><summary>Hint 4: the missing years</summary>
-<p>Go back to the main sheet. Open the <code>COMMODITY_NAME</code> filter and search <code>Copper</code>. Read every name on the list and note which years each one covers.</p>
+<p>Go back to the main sheet, with <code>FROM_LOCATION</code> still filtered to World. Open the <code>COMMODITY_NAME</code> filter, search <code>Copper</code>, and read every name on the list. Then tick one copper name at a time and look at which years appear for each.</p>
 </details>
 
 <details class="check"><summary>Check your work</summary>
@@ -208,14 +210,14 @@
 <p><strong>Going further:</strong> use your price column. What happened to the price of a ton of copper between 1856, 1886, and 1906?</p>
 </details>
 
-<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=320">5:20</a></p>
+<p><a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=320">Walkthrough video for Task 2, from 5:20</a></p>
 
 <h2>Task 3. Raw cotton (20 minutes)</h2>
 <p class="task-q">(a) How did Britain's raw cotton imports change between 1856 and 1906? In which year was raw cotton most expensive, and why?</p>
 <p>Cotton is measured in hundredweights (cwt). One hundredweight is 112 pounds, or one-twentieth of a ton.</p>
 
 <details><summary>Hint 1</summary>
-<p>These are the same moves as Task 2. Filter <code>COMMODITY_NAME</code> to raw cotton and <code>FROM_LOCATION</code> to World. Your PRICE_PER_UNIT column already holds the price per hundredweight. Watch for one year where the category has a slightly different name. To see more than one name, tick each one in the filter list.</p>
+<p>These are the same moves as Task 2. Filter <code>FROM_LOCATION</code> to World, and on <code>COMMODITY_NAME</code> search <code>Cotton</code> and tick <code>Cotton Raw</code> (the source puts the noun first). Your PRICE_PER_UNIT column already holds the price per hundredweight. Watch for one year where the category has a slightly different name. To see more than one name, tick each one in the filter list.</p>
 </details>
 
 <details class="check"><summary>Check your work</summary>
@@ -223,10 +225,10 @@
 <li>You should have a World total for all eleven years. If one is missing, look for a slightly different commodity name.</li>
 <li>Your price column should be in pounds per hundredweight. If the numbers are in the thousands or are tiny fractions, check your formula.</li>
 </ul>
-<p><strong>Think about it:</strong> what was happening in the United States in the early 1860s? Compare the suppliers in 1856 with the suppliers in your most expensive year. Who filled the gap? The Week 3 and Week 5 lectures will help.</p>
+<p><strong>Think about it:</strong> in your most expensive year, which of Britain's 1856 suppliers sent much less? Find out why. Who filled the gap? The Week 3 and Week 5 lectures will help.</p>
 </details>
 
-<p class="task-q">(b) How much cotton did the &ldquo;West Coast of Africa&rdquo; send to the UK in 1866? What is the last year that name appears as a cotton supplier? Why does it disappear? (The answer is in the spreadsheet.)</p>
+<p class="task-q">(b) How much cotton did the &ldquo;West Coast of Africa&rdquo; send to the UK in 1866? What is the last year a place whose name begins &ldquo;West Coast of Africa&rdquo; appears as a cotton supplier? Why does it disappear? (The answer is in the spreadsheet.)</p>
 
 <details><summary>Hint 2</summary>
 <p>Clear the World filter. On <code>FROM_LOCATION</code>, search <code>Africa</code>, then try <code>Coast</code>. Sort by <code>YEAR</code> and read the place names in order.</p>
@@ -238,10 +240,9 @@
 <li>Read the <code>FROM_LOCATION</code> names in year order, from 1856 to 1906. Which names appear only once? Which new names appear later, and what do they have in common?</li>
 <li>Did West African cotton really stop, or did something else change?</li>
 </ul>
-<p><strong>Think about it:</strong> a column of place names is also a record of who controlled those places.</p>
 </details>
 
-<p class="video">Video: (a) <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=530">8:50</a>, (b) <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=660">11:00</a></p>
+<p>Walkthrough video for Task 3: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=530">part (a), from 8:50</a>; <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=660">part (b), from 11:00</a></p>
 
 <h2>Task 4. Britain's top ten imports by value, 1901 (10 minutes)</h2>
 <p class="task-q">What were the ten most valuable imports in 1901? How many of them are food?</p>
@@ -270,7 +271,7 @@
 <p><strong>Think about it:</strong> how many of your ten are food? This dataset is called <em>London's Ghost Acres</em>. Think back to Pomeranz's &ldquo;ghost acres&rdquo; in Week 5: what does your list suggest about where Britain's food came from by 1901?</p>
 </details>
 
-<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=1010">16:50</a></p>
+<p><a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=1010">Walkthrough video for Task 4, from 16:50</a></p>
 
 <h2>Task 5. Top ten by quantity, 1901 (20 minutes)</h2>
 <p class="task-q">Now rank the 1901 imports by weight. What are the top ten?</p>
@@ -283,27 +284,28 @@
 <tr><td>Tuns (whale oil)</td><td>a tun is about one ton of train (whale) oil: keep as is</td></tr>
 <tr><td>CWTS (Hundredweights)</td><td>divide by 20</td></tr>
 <tr><td>Lbs. (Pounds)</td><td>divide by 2,240</td></tr>
-<tr><td>Gallons (petroleum only)</td><td>a gallon of petroleum weighs about 6.1 lbs: multiply by 6.1, then divide by 2,240</td></tr>
+<tr><td>Gallons (petroleum only)</td><td>an imperial gallon of petroleum weighs about 8 lbs: multiply by 8, then divide by 2,240</td></tr>
 </tbody>
 </table>
 <p>Leave out everything else: goods counted by number (cattle, watches), by yards of cloth, in &ldquo;great hundreds&rdquo; (eggs), or recorded by value only.</p>
+<p><strong>Set up first:</strong> in your <code>1901</code> sheet, type <code>TONS</code> in <strong>R1</strong>. Then click any cell and turn on filters (<strong>Excel:</strong> <strong>Data &gt; Filter</strong>; <strong>Google Sheets:</strong> <strong>Data &gt; Create a filter</strong>). A pasted sheet doesn't keep the main sheet's filters, and you need a filter arrow on every column, including TONS.</p>
 
 <details><summary>Hint 1: the straightforward way</summary>
 <ol>
-<li>Work in your <code>1901</code> sheet. Sort it by <code>UNIT_NAME</code> (its filter arrow &gt; <strong>Sort A to Z</strong>) so each unit sits together in one block.</li>
-<li>In <strong>R1</strong> type <code>TONS</code>.</li>
+<li>In your <code>1901</code> sheet, sort by <code>UNIT_NAME</code> (its filter arrow &gt; <strong>Sort A to Z</strong>) so each unit sits together in one block.</li>
 <li>In the first row of a block, type the right formula. For example, if the hundredweights start in row 11, type <code>=G11/20</code> in R11. For tons, the formula is just <code>=G11</code>.</li>
 <li>Click that cell, then <kbd>Shift</kbd>+click the cell in column R on the block's <em>last</em> row, and press <kbd>Ctrl</kbd>+<kbd>D</kbd> (<em>fill down</em>, in both programs). Don't double-click the fill handle here: it would run past the end of the block.</li>
 </ol>
 <figure class="shot"><img src="images/e_fill_block.gif" alt="Animation: the formula =G11/20 sits in R11 with the rest of the hundredweight block selected; after Ctrl+D, every row in the block shows its weight in tons." width="695" height="317" loading="lazy"></figure>
-<p>Repeat for each unit you can convert. Finally, sort the whole sheet by <code>TONS</code>, largest to smallest. Empty cells sort to the bottom.</p>
+<p>Repeat for each unit you can convert. The <strong>Gallons</strong> block mixes petroleum with wine, spirits, and vinegar: type the petroleum formula only in the petroleum rows. Finally, sort by <code>TONS</code> (its filter arrow), largest to smallest. Empty cells sort to the bottom.</p>
 </details>
 
 <details><summary>Hint 2: one formula for everything (optional)</summary>
 <p>If you're comfortable with formulas, paste this into R2 and fill it down with the fill handle. It works in both Excel and Sheets:</p>
-<p><code>=IFS(H2="Tons",G2, H2="Loads",G2, H2="Tuns (whale oil)",G2, H2="CWTS (Hundredweights)",G2/20, H2="Lbs. (Pounds)",G2/2240, AND(H2="Gallons",ISNUMBER(SEARCH("Petroleum",B2))),G2*6.1/2240, TRUE,"")</code></p>
+<p><code>=IFS(H2="Tons",G2, H2="Loads",G2, H2="Tuns (whale oil)",G2, H2="CWTS (Hundredweights)",G2/20, H2="Lbs. (Pounds)",G2/2240, AND(H2="Gallons",ISNUMBER(SEARCH("Petroleum",B2))),G2*8/2240, TRUE,"")</code></p>
 <figure class="shot"><img src="images/e_ifs_formula.png" alt="The IFS formula in the formula bar, with its result in cell R2 under the heading TONS." width="750" height="79" loading="lazy"></figure>
 <p>Read it left to right: <em>if the unit is Tons, use the amount; if it is hundredweights, divide by 20&hellip;; otherwise leave the cell blank.</em></p>
+<p><strong>Watch out when you sort:</strong> the &ldquo;blank&rdquo; cells this formula makes are not truly empty, so in Excel they sort to the <em>top</em> when you sort largest to smallest. Scroll down past them, or open the TONS filter and untick <strong>(Blanks)</strong>.</p>
 </details>
 
 <details class="check"><summary>Check your work</summary>
@@ -315,17 +317,18 @@
 <p><strong>Think about it:</strong> compare this list with your Task 4 list. What ranks high by value but low by weight, and the reverse? What disappears from a ranking by weight altogether? If an item on your list puzzles you, look up what it was used for: it may tell you something about British industry.</p>
 </details>
 
-<p class="video">Video: <a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=1190">19:50</a></p>
+<p><a href="https://usask.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b1c0935-60de-46a5-88e3-ae240116ddce&amp;start=1190">Walkthrough video for Task 5, from 19:50</a></p>
 
 <h2 id="milestone">From workshop to Milestone 4</h2>
-<p>Your Milestone 4 chart will probably use a much smaller dataset you have typed in yourself from your sources. The same habits apply:</p>
+<p>Milestone 4 is due <strong>Friday, October 30</strong>. Your chart will probably use a much smaller dataset you have typed in yourself from your sources. The same habits apply:</p>
 <ul>
 <li><strong>Make a small, clean table</strong>: one row per year (or place), one column per measure, with the unit in the column heading.</li>
 <li><strong>Don't count totals twice.</strong> Know which rows are totals and which are parts.</li>
 <li><strong>Keep categories and units consistent</strong>, or say clearly where they change.</li>
 <li><strong>Label everything</strong>: a title that says what, where, and when, and axis titles that include units (tons, &pound;, cwt).</li>
-<li><strong>Credit the source under the chart.</strong> For this dataset: Jim Clifford, <em>London's Ghost Acres: British Imports 1856&ndash;1906 Database</em> (Zenodo, 2019), from the <em>Annual Statement of Trade of the United Kingdom</em>, House of Commons Parliamentary Papers.</li>
+<li><strong>Credit the source under the chart</strong>, including exactly where the numbers come from (page or table number, or the dataset). For this dataset: Jim Clifford, <em>London's Ghost Acres: British Imports 1856&ndash;1906 Database</em> (Zenodo, 2019), from the <em>Annual Statement of Trade of the United Kingdom</em>, House of Commons Parliamentary Papers.</li>
 <li><strong>Make it accessible</strong>: write alt text, and use labels that don't rely on colour alone.</li>
+<li><strong>Write a short interpretation</strong> (75&ndash;150 words): what the chart shows, and how it bears on your project's question.</li>
 <li><strong>Submit the spreadsheet</strong> with the chart.</li>
 </ul>
 <h3>Getting your chart into your StoryMap</h3>
